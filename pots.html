@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Personal Finance App - Pots</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2 class="logo">Finance</h2>
+    <nav>
+      <ul class="sidebar-menu">
+        <li class="menu-item">
+          <a href="index.html">
+            <img src="./assets/images/icon-nav-overview.svg" />
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="transactions.html">
+            <img src="./assets/images/icon-nav-transactions.svg" />
+            <span>Transactions</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="budgets.html">
+            <img src="./assets/images/icon-nav-budgets.svg" />
+            <span>Budgets</span>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="pots.html">
+            <img src="./assets/images/icon-nav-pots.svg" />
+            <span>Pots</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="recurring.html">
+            <img src="./assets/images/icon-nav-recurring-bills.svg" />
+            <span>Recurring Bills</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <button class="minimize-menu" id="minimizeBtn">
+      <img src="./assets/images/icon-minimize-menu.svg" />
+      <span>Minimize Menu</span>
+    </button>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1>Pots</h1>
+      <button class="btn btn-dark" id="addPotBtn">+ Add New Pot</button>
+    </header>
+
+    <div class="pots-grid" id="potsGrid"></div>
+  </main>
+
+  <!-- Add/Edit Pot Modal -->
+  <div class="modal-overlay" id="potModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="potModalTitle">Add New Pot</h2>
+        <button class="modal-close" id="potModalClose">
+          <img src="./assets/images/icon-close-modal.svg" />
+        </button>
+      </div>
+      <p class="modal-description" id="potModalDesc">
+        Create a pot to set savings targets. These can help keep you on track as you save for special purchases.
+      </p>
+
+      <div class="form-group">
+        <label class="form-label" for="potName">Pot Name</label>
+        <input type="text" class="form-input" id="potName" placeholder="e.g. Rainy Days" maxlength="30" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="potTarget">Target</label>
+        <div class="form-input-prefix">
+          <input type="number" class="form-input" id="potTarget" placeholder="0.00" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Theme</label>
+        <div class="color-picker-grid" id="potColorPicker"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-dark" id="potModalSubmit">Add Pot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Pot Modal -->
+  <div class="modal-overlay" id="deletePotModal">
+    <div class="modal modal-delete">
+      <div class="modal-header">
+        <h2 class="modal-title" id="deletePotTitle">Delete Pot</h2>
+        <button class="modal-close" id="deletePotClose">
+          <img src="./assets/images/icon-close-modal.svg" />
+        </button>
+      </div>
+      <p>Are you sure you want to delete this pot? This action cannot be reversed, and all the data inside it will be removed forever.</p>
+      <div class="modal-footer">
+        <button class="btn btn-danger" id="deletePotConfirm">Yes, Confirm Deletion</button>
+        <button class="btn btn-outline" id="deletePotCancel">No, Go Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Money Modal -->
+  <div class="modal-overlay" id="addMoneyModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="addMoneyTitle">Add to Pot</h2>
+        <button class="modal-close" id="addMoneyClose">
+          <img src="./assets/images/icon-close-modal.svg" />
+        </button>
+      </div>
+      <p class="modal-description">
+        Add money to your pot to keep it separate from your main balance. As soon as you add this money, it will be deducted from your current balance.
+      </p>
+
+      <div class="pot-money-display">
+        <div class="pot-money-label">New Amount</div>
+        <div class="pot-money-amount" id="addMoneyNewAmount">$0.00</div>
+        <div class="pot-money-track">
+          <div class="pot-money-fill-current" id="addMoneyCurrentFill" style="width:0%"></div>
+          <div class="pot-money-fill-delta" id="addMoneyDeltaFill" style="left:0%;width:0%"></div>
+        </div>
+        <div class="pot-money-stats">
+          <span class="pot-money-pct" id="addMoneyPct">0%</span>
+          <span class="pot-money-target">Target of <span id="addMoneyTarget">$0</span></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="addMoneyAmount">Amount to Add</label>
+        <div class="form-input-prefix">
+          <input type="number" class="form-input" id="addMoneyAmount" placeholder="0.00" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-dark" id="addMoneyConfirm">Confirm Addition</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdraw Modal -->
+  <div class="modal-overlay" id="withdrawModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="withdrawTitle">Withdraw from Pot</h2>
+        <button class="modal-close" id="withdrawClose">
+          <img src="./assets/images/icon-close-modal.svg" />
+        </button>
+      </div>
+      <p class="modal-description">
+        Withdraw from your pot to put money back in your main balance. This will reduce the amount you have in this pot.
+      </p>
+
+      <div class="pot-money-display">
+        <div class="pot-money-label">New Amount</div>
+        <div class="pot-money-amount" id="withdrawNewAmount">$0.00</div>
+        <div class="pot-money-track">
+          <div class="pot-money-fill-current" id="withdrawCurrentFill" style="width:0%"></div>
+          <div class="pot-money-fill-delta" id="withdrawDeltaFill" style="left:0%;width:0%;background:rgba(201,71,54,0.25)"></div>
+        </div>
+        <div class="pot-money-stats">
+          <span class="pot-money-pct" id="withdrawPct">0%</span>
+          <span class="pot-money-target">Target of <span id="withdrawTarget">$0</span></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="withdrawAmount">Amount to Withdraw</label>
+        <div class="form-input-prefix">
+          <input type="number" class="form-input" id="withdrawAmount" placeholder="0.00" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-dark" id="withdrawConfirm">Confirm Withdrawal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="pots.js"></script>
+</body>
+
+</html>

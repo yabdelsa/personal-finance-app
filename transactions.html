@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Personal Finance App - Transactions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2 class="logo">Finance</h2>
+    <nav>
+      <ul class="sidebar-menu">
+        <li class="menu-item">
+          <a href="index.html">
+            <img src="./assets/images/icon-nav-overview.svg" />
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="transactions.html">
+            <img src="./assets/images/icon-nav-transactions.svg" />
+            <span>Transactions</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="budgets.html">
+            <img src="./assets/images/icon-nav-budgets.svg" />
+            <span>Budgets</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="pots.html">
+            <img src="./assets/images/icon-nav-pots.svg" />
+            <span>Pots</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="recurring.html">
+            <img src="./assets/images/icon-nav-recurring-bills.svg" />
+            <span>Recurring Bills</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <button class="minimize-menu" id="minimizeBtn">
+      <img src="./assets/images/icon-minimize-menu.svg" />
+      <span>Minimize Menu</span>
+    </button>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1>Transactions</h1>
+    </header>
+
+    <section class="transactions-controls">
+      <div class="search-wrapper">
+        <input type="search" id="transactionSearch" placeholder="Search transaction" />
+        <img src="./assets/images/icon-search.svg" class="search-icon" />
+      </div>
+
+      <div class="sort-wrapper">
+        <div class="filter-group">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All Transactions</option>
+            <option value="Bills">Bills</option>
+            <option value="Dining Out">Dining Out</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="General">General</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Transportation">Transportation</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sortTransactions">Sort by</label>
+          <select id="sortTransactions">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A to Z</option>
+            <option value="za">Z to A</option>
+            <option value="highest">Highest</option>
+            <option value="lowest">Lowest</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="transactions-section">
+      <div class="tx-header-row">
+        <span>Recipient / Sender</span>
+        <span>Category</span>
+        <span>Transaction Date</span>
+        <span style="text-align:right">Amount</span>
+      </div>
+      <ul id="transactionsList" class="transactions-list"></ul>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <script src="transactions.js"></script>
+</body>
+
+</html>

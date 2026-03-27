@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Personal Finance App - Recurring Bills</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <aside class="sidebar" id="sidebar">
+    <h2 class="logo">Finance</h2>
+
+    <nav>
+      <ul class="sidebar-menu">
+        <li class="menu-item">
+          <a href="index.html">
+            <img src="./assets/images/icon-nav-overview.svg" />
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="transactions.html">
+            <img src="./assets/images/icon-nav-transactions.svg" />
+            <span>Transactions</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="budgets.html">
+            <img src="./assets/images/icon-nav-budgets.svg" />
+            <span>Budgets</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="pots.html">
+            <img src="./assets/images/icon-nav-pots.svg" />
+            <span>Pots</span>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="recurring.html">
+            <img src="./assets/images/icon-nav-recurring-bills.svg" />
+            <span>Recurring Bills</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="minimize-menu" id="minimizeBtn">
+      <img src="./assets/images/icon-minimize-menu.svg" />
+      <span>Minimize Menu</span>
+    </button>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1>Recurring Bills</h1>
+    </header>
+
+    <section class="summary-section">
+      <div class="card total-bills dark-card">
+        <img src="./assets/images/icon-recurring-bills.svg" class="total-bills-icon" onerror="this.style.display='none'"/>
+        <h3>Total Bills</h3>
+        <p id="totalBillsAmount">$0.00</p>
+      </div>
+
+      <div class="card summary-breakdown">
+        <h3>Summary</h3>
+        <ul class="summary-list">
+          <li class="paid-row">
+            <span>Paid Bills</span>
+            <span id="paidBillsAmount">$0.00</span>
+          </li>
+          <li>
+            <span>Total Upcoming</span>
+            <span id="upcomingBillsAmount">$0.00</span>
+          </li>
+          <li class="due-soon-row">
+            <span>Due Soon</span>
+            <span id="dueSoonBillsAmount">$0.00</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bills-section">
+      <div class="section-card">
+        <div class="bills-controls">
+          <div class="bills-search-wrapper">
+            <input type="search" id="searchBills" placeholder="Search bills" />
+            <img src="./assets/images/icon-search.svg" class="bills-search-icon" />
+          </div>
+
+          <div class="sort-filter-wrapper">
+            <div class="filter-group">
+              <label for="sortBills">Sort by</label>
+              <select id="sortBills">
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+                <option value="az">A to Z</option>
+                <option value="za">Z to A</option>
+                <option value="highest">Highest</option>
+                <option value="lowest">Lowest</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <ul class="bills-list" id="billsList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="recurring.js"></script>
+</body>
+
+</html>

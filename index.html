@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Personal Finance App - Overview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <h2 class="logo">Finance</h2>
+
+    <nav>
+      <ul class="sidebar-menu">
+        <li class="menu-item active">
+          <a href="index.html">
+            <img src="./assets/images/icon-nav-overview.svg" />
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="transactions.html">
+            <img src="./assets/images/icon-nav-transactions.svg" />
+            <span>Transactions</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="budgets.html">
+            <img src="./assets/images/icon-nav-budgets.svg" />
+            <span>Budgets</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="pots.html">
+            <img src="./assets/images/icon-nav-pots.svg" />
+            <span>Pots</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="recurring.html">
+            <img src="./assets/images/icon-nav-recurring-bills.svg" />
+            <span>Recurring Bills</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="minimize-menu" id="minimizeBtn">
+      <img src="./assets/images/icon-minimize-menu.svg" />
+      <span>Minimize Menu</span>
+    </button>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1>Overview</h1>
+    </header>
+
+    <!-- Balance Cards -->
+    <section class="balance-section">
+      <div class="balance-card">
+        <h3>Current Balance</h3>
+        <p class="balance-amount" id="currentBalance">$0.00</p>
+      </div>
+      <div class="balance-card" style="background:#f7f4ef;color:#1c1f24;">
+        <h3 style="color:#6b7280;">Income</h3>
+        <p class="balance-amount" id="incomeBalance">$0.00</p>
+      </div>
+      <div class="balance-card" style="background:#f7f4ef;color:#1c1f24;">
+        <h3 style="color:#6b7280;">Expenses</h3>
+        <p class="balance-amount" id="expensesBalance">$0.00</p>
+      </div>
+    </section>
+
+    <!-- Overview Grid -->
+    <div class="overview-grid">
+
+      <!-- Pots Card -->
+      <div class="card">
+        <div class="overview-card-header">
+          <h2>Pots</h2>
+          <a href="pots.html">See Details <img src="./assets/images/icon-caret-right.svg" style="width:6px;vertical-align:middle;"/></a>
+        </div>
+        <div class="pots-overview-content">
+          <div class="pots-total-box">
+            <p class="pots-total-label">Total Saved</p>
+            <p class="pots-total-amount" id="potsTotalAmount">$0</p>
+          </div>
+          <ul class="pots-mini-list" id="potsMiniList"></ul>
+        </div>
+      </div>
+
+      <!-- Transactions Card -->
+      <div class="card">
+        <div class="overview-card-header">
+          <h2>Transactions</h2>
+          <a href="transactions.html">View All <img src="./assets/images/icon-caret-right.svg" style="width:6px;vertical-align:middle;"/></a>
+        </div>
+        <ul class="overview-transactions-list" id="overviewTransactions"></ul>
+      </div>
+
+      <!-- Budgets Card -->
+      <div class="card">
+        <div class="overview-card-header">
+          <h2>Budgets</h2>
+          <a href="budgets.html">See Details <img src="./assets/images/icon-caret-right.svg" style="width:6px;vertical-align:middle;"/></a>
+        </div>
+        <div class="budgets-overview-content">
+          <div class="budget-donut-container">
+            <svg id="overviewDonut" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div class="donut-center-label">
+              <span class="donut-center-amount" id="donutSpent">$0</span>
+              <span class="donut-center-sub">of <span id="donutLimit">$0</span> limit</span>
+            </div>
+          </div>
+          <ul class="budget-mini-list" id="budgetMiniList"></ul>
+        </div>
+      </div>
+
+      <!-- Recurring Bills Card -->
+      <div class="card">
+        <div class="overview-card-header">
+          <h2>Recurring Bills</h2>
+          <a href="recurring.html">See Details <img src="./assets/images/icon-caret-right.svg" style="width:6px;vertical-align:middle;"/></a>
+        </div>
+        <ul class="recurring-summary-list" id="recurringOverview"></ul>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
