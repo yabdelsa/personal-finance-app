@@ -1786,3 +1786,225 @@ h3 {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #e5e2dd; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #c9c6c1; }
+
+/* ============================= */
+/* MOBILE RESPONSIVE             */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+    padding-bottom: 72px; /* space for bottom nav */
+  }
+
+  /* Hide the desktop sidebar completely */
+  .sidebar {
+    display: none;
+  }
+
+  /* Main content takes full width */
+  .main-content {
+    padding: 1.5rem 1rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  /* ---- BOTTOM NAV ---- */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1c1f24;
+    border-radius: 12px 12px 0 0;
+    padding: 0.6rem 0 0.5rem;
+    z-index: 500;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    transition: color 0.2s;
+  }
+
+  .bottom-nav-item img {
+    width: 20px;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+
+  .bottom-nav-item.active {
+    color: white;
+  }
+
+  .bottom-nav-item.active img {
+    opacity: 1;
+  }
+
+  /* ---- OVERVIEW ---- */
+  .balance-section {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pots-overview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .pots-total-box {
+    text-align: left;
+  }
+
+  .pots-mini-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .budgets-overview-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .budget-donut-container {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  /* ---- BUDGETS PAGE ---- */
+  .budgets-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .budgets-sidebar-panel {
+    position: static;
+  }
+
+  .spending-donut-wrap {
+    width: 180px;
+    height: 180px;
+  }
+
+  .legend-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- POTS PAGE ---- */
+  .pots-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- TRANSACTIONS PAGE ---- */
+  .transactions-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  .sort-wrapper {
+    justify-content: space-between;
+  }
+
+  .tx-header-row {
+    display: none; /* hide column headers on mobile */
+  }
+
+  .transaction-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.25rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .transaction-row .row-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .transaction-row .row-date {
+    grid-column: 1;
+    grid-row: 2;
+    padding-left: 52px;
+    font-size: 0.75rem;
+  }
+
+  .transaction-row .row-amount {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Hide the category column on mobile (it's in row-info already) */
+  .transaction-row > .row-category:nth-child(2) {
+    display: none;
+  }
+
+  /* ---- RECURRING BILLS ---- */
+  .summary-section {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .bills-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .bills-search-wrapper {
+    width: 100%;
+  }
+
+  /* ---- MODALS ---- */
+  .modal {
+    padding: 1.5rem;
+    border-radius: 16px 16px 0 0;
+    max-height: 85vh;
+    margin-top: auto;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+  }
+
+  /* ---- PAGE HEADER ---- */
+  .page-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Hide bottom nav on desktop */
+.bottom-nav {
+  display: none;
+}
