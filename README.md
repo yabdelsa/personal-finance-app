@@ -44,5 +44,5 @@ Budgets and pots you add/edit/delete are saved in `localStorage` on top of the s
 
 ## Live Demo
 
-Hosted on GitHub Pages: [View Live](https://YOUR_USERNAME.github.io/YOUR_REPO_NAME)
+Hosted on GitHub Pages: [View Live](https://yabdelsa.github.io/personal-finance-app)
 
