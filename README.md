@@ -44,5 +44,5 @@ Budgets and pots you add/edit/delete are saved in `localStorage` on top of the s
 
 ## Live Demo
 
-Hosted on GitHub Pages: [View Live](https://personal-finance-app-eta-five.vercel.app/)
+Hosted on GitHub Pages: [View Live](https://usepersonalfinance.vercel.app/)
 
